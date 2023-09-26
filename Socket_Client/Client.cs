@@ -128,6 +128,7 @@ namespace Socket_Client
                 {
                     clientSocket.Shutdown(SocketShutdown.Both);
                     clientSocket.Close();
+                    Console.WriteLine("Connection is now closed");
                 }
             }
             catch (ArgumentNullException ane)
