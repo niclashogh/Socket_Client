@@ -6,10 +6,9 @@
 
         static void Main(string[] args)
         {
-            Client.InitEndPoint();
+            Client.InitializeConnection();
 
-            Console.ReadKey();
-            Client.CloseConnection();
+            Console.ReadLine();
 
             //Client.TestRun();
         }
