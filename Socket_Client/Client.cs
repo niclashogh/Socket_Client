@@ -16,19 +16,19 @@ namespace Socket_Client
         private byte[] bufferData { get; set; } = new byte[1024];
         private byte[] dataSubmit { get; set; }
         private string bufferDecoded { get; set; }
-        private int Port { get; set; }
+        private int port { get; set; }
         #endregion
 
         public Client(int port = 1111)
         {
-            Port = port;
+            this.port = port;
         }
 
         public void InitializeConnection()
         {
             IPHostEntry IPEntry = Dns.GetHostEntry(Dns.GetHostName());
             IPAddress IPAddr = IPEntry.AddressList[0];
-            IPEndPoint EndPoint = new(IPAddr, Port);
+            IPEndPoint EndPoint = new(IPAddr, this.port);
 
             clientSocket = new(IPAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
@@ -94,7 +94,7 @@ namespace Socket_Client
         {
             try
             {
-                bufferDecoded = ""; // Aparently need in client but not on the host side ??
+                bufferDecoded = ""; // Aparently needed in client but not on the host side ??
                 int packedLength = clientSocket.Receive(bufferData);
                 bufferDecoded += Encoding.ASCII.GetString(bufferData, 0, packedLength);
 

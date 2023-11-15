@@ -1,16 +1,15 @@
 ﻿namespace Socket_Client
 {
-    public class Program
+    internal class Program
     {
-        static Client Client = new();
+        private static Client client = new();
 
         static void Main(string[] args)
         {
-            Client.InitializeConnection();
+            client.InitializeConnection();
 
             Console.ReadLine();
-
-            //Client.TestRun();
+            
         }
     }
 }
